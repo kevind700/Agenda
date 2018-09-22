@@ -1,0 +1,27 @@
+enum Role {
+    ADMIN
+    GENERAL
+}
+
+type User {
+    _id: String!
+    name: String!
+    password: String!
+    role: Role!
+    contacts: [Contact]
+}
+
+type Query {
+    allUser(role: Role): [User]
+    currentUser: User
+}
+
+type Response {
+    code: Int,
+    message: String
+}
+
+type Mutation {
+    createUser(name: String!, password: String!, role: Role!): User!
+    deleteAllUser: Response
+}
